@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
+        <title>Audiobooks Galore!</title>
+        <!-- link href="style.css" rel="stylesheet" type="text/css" media="all" -->
+        <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+        <style>
+            body{
+                margin: 0px;
+                padding: 0px;
+                cursor: url("cursor.png"), default;
+                background-color: black;
+                background-image: linear-gradient(to right, pink 5%, rgba(0,0,0,0) 17%,rgba(0,0,0,0) 83%, pink 95%);
+                min-height: 200vh;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="verticaltextwrapper">
+            <div class="verticaltext">
+                <p></p>
+            </div>
+        </div>
+
+        <div class="mainheader">
+            <h1>Cop these audiobooks y'all</h1>
+        </div>
+
+        <div class="maincontent">
+          {% for audiobook in audiobooks %}
+            <h6>
+              {{ audiobook.name }} : {{ audiobook.url }}
+            </h6>
+          {% endfor %}
+        </div>
+
+    </body>
+</html>

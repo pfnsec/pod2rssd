@@ -7,6 +7,7 @@ from jinja2 import Environment, FileSystemLoader
 
 
 def scandir():
+    rss_paths = []
     for dirpath, dirnames, filenames in os.walk("audio"):
         if not dirnames: 
             # Found a leaf dir. See if it contains audio files!
@@ -60,7 +61,17 @@ def scandir():
             
             print(rss_srvpath)
             
-
-    
+            rss_paths.append({
+                "name": dirpath,
+                "url": rss_srvpath
+            })
             
+    environment = Environment(loader=FileSystemLoader("templates/"))
+    template = environment.get_template("index.html.template")
+    
+    content = template.render(audiobooks=rss_paths)
+    with open("audio/index.html", mode="w", encoding="utf-8") as message:
+        message.write(content)
+        print(f"... wrote index.html")
+
 scandir()
